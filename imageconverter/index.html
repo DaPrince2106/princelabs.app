@@ -7,55 +7,56 @@
   <meta name="description" content="Image Converter — Convert between PNG, JPEG, WEBP, HEIC, TIFF, and BMP. Fast, private, all on-device." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(165deg, #0f0f1a 0%, #1a1a2e 40%, #16213e 100%);
-      color: #e2e8f0; line-height: 1.65; min-height: 100vh; position: relative;
+      background: #fafafa; color: #0f172a; line-height: 1.7; min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at 30% 0%, #f1f5f9 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 100%, #e2e8f0 0%, transparent 50%);
     }
-    body::before {
-      content: ''; position: fixed; inset: 0;
-      background: radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.04) 0%, transparent 60%),
-                  radial-gradient(ellipse at 70% 100%, rgba(148,163,184,0.04) 0%, transparent 60%);
-      pointer-events: none;
+    .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #475569; text-decoration: none; font-size: 14px; font-weight: 600; margin-bottom: 36px;
+      padding: 8px 16px; border-radius: 12px; background: #fff; border: 1px solid #f1f5f9; transition: all 0.2s;
     }
-    .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; position: relative; z-index: 1; }
-    .back-link { display: inline-flex; align-items: center; gap: 8px; color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 40px; }
-    .back-link:hover { color: #cbd5e1; }
-    header { text-align: center; margin-bottom: 56px; }
-    .logo { width: 80px; height: 80px; margin-bottom: 20px; border-radius: 22px; box-shadow: 0 8px 32px rgba(255,255,255,0.06); background: #1e1e2e; }
-    header h1 { font-size: 34px; font-weight: 700; color: #f8fafc; letter-spacing: -0.5px; }
-    header p { font-size: 16px; color: #94a3b8; margin-top: 10px; }
+    .back-link:hover { border-color: #e2e8f0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    header { text-align: center; margin-bottom: 52px; }
+    .logo { width: 88px; height: 88px; margin-bottom: 24px; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.06); background: #fff; }
+    header h1 { font-size: 38px; font-weight: 800; color: #0f172a; letter-spacing: -0.8px; }
+    header p { font-size: 16px; color: #64748b; margin-top: 10px; }
     .card {
-      background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 36px; margin-bottom: 24px;
+      background: #fff; border: 1px solid #f1f5f9; border-radius: 24px;
+      padding: 36px; margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
-    .card:hover { border-color: rgba(255,255,255,0.12); }
-    .card h2 { font-size: 19px; font-weight: 600; color: #f1f5f9; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
-    .card p, .card li { font-size: 15px; color: #cbd5e1; }
+    .card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
+    .card h2 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .card p, .card li { font-size: 15px; color: #475569; }
     .card ul { padding-left: 22px; }
     .card ul li { margin-bottom: 10px; }
-    .card ul li::marker { color: #94a3b8; }
-    .card strong { color: #f8fafc; }
+    .card ul li::marker { color: #0f172a; }
+    .card strong { color: #0f172a; }
     .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
     .feature-tag {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px; padding: 14px 16px; text-align: center; font-size: 14px; font-weight: 500; color: #cbd5e1;
+      background: #f1f5f9; border: 1px solid #e2e8f0;
+      border-radius: 14px; padding: 16px; text-align: center; font-size: 14px; font-weight: 600; color: #334155;
     }
-    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 20px 0; }
+    .faq-item { border-bottom: 1px solid #f8fafc; padding: 20px 0; }
     .faq-item:last-child { border-bottom: none; }
-    .faq-question { font-weight: 600; font-size: 15px; color: #f1f5f9; margin-bottom: 8px; }
-    .faq-answer { font-size: 14px; color: #94a3b8; }
-    .faq-answer a { color: #cbd5e1; text-decoration: underline; }
-    .contact-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; text-align: center; }
-    .contact-box p { font-size: 15px; color: #cbd5e1; margin-bottom: 8px; }
-    .contact-box .email { font-size: 18px; font-weight: 600; color: #94a3b8; text-decoration: none; }
+    .faq-question { font-weight: 700; font-size: 15px; color: #0f172a; margin-bottom: 8px; }
+    .faq-answer { font-size: 15px; color: #475569; }
+    .faq-answer a { color: #0f172a; text-decoration: underline; font-weight: 500; }
+    .contact-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 28px; text-align: center; }
+    .contact-box p { font-size: 15px; color: #475569; margin-bottom: 8px; }
+    .contact-box .email { font-size: 18px; font-weight: 700; color: #0f172a; text-decoration: none; }
     .contact-box .email:hover { text-decoration: underline; }
-    footer { text-align: center; padding: 40px 24px; font-size: 13px; color: #475569; }
-    footer a { color: #475569; text-decoration: underline; }
-    @media (max-width: 600px) { .container { padding: 32px 16px; } .card { padding: 24px; } header h1 { font-size: 28px; } .features-grid { grid-template-columns: 1fr; } }
+    footer { text-align: center; padding: 44px 24px; font-size: 14px; color: #94a3b8; }
+    footer a { color: #94a3b8; text-decoration: underline; }
+    @media (max-width: 600px) { .container { padding: 32px 16px; } .card { padding: 24px; } header h1 { font-size: 30px; } .features-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -97,7 +98,7 @@
     </div>
     <div class="card">
       <h2><span class="icon">❓</span> FAQ</h2>
-      <div class="faq-item"><div class="faq-question">How does conversion work?</div><div class="faq-answer">Pick images, choose a target format, adjust quality or resize, then tap Convert. Once done, tap Save to Photos or Share. Converted images are stored in the app's documents directory temporarily.</div></div>
+      <div class="faq-item"><div class="faq-question">How does conversion work?</div><div class="faq-answer">Pick images, choose a target format, adjust quality or resize, then tap Convert. Once done, tap Save to Photos or Share. Converted images are stored temporarily in the app.</div></div>
       <div class="faq-item"><div class="faq-question">What does the quality slider do?</div><div class="faq-answer">Controls compression for lossy formats (JPEG, WEBP, HEIC). Higher = better quality, larger file size. PNG, TIFF, and BMP are lossless — the slider is hidden for those.</div></div>
       <div class="faq-item"><div class="faq-question">How does resize work?</div><div class="faq-answer">Set a max width and/or height. The image scales down proportionally — aspect ratio is always preserved. Fill only one field and the other auto-calculates.</div></div>
       <div class="faq-item"><div class="faq-question">What about my privacy?</div><div class="faq-answer">Everything runs on-device. No images, usage data, or personal information ever leaves your phone. No analytics, no tracking, no servers. The app requests photo library access only to pick and save images.</div></div>
@@ -110,7 +111,7 @@
       <div class="faq-item"><div class="faq-question">Internet Access</div><div class="faq-answer">The app does not access the internet. Functions fully offline.</div></div>
       <div class="faq-item"><div class="faq-question">Temporary Storage</div><div class="faq-answer">Converted images are stored in the app's local documents directory until you convert new images or delete the app.</div></div>
       <div class="faq-item"><div class="faq-question">Third-Party Services</div><div class="faq-answer">None. Only Apple system frameworks (Image I/O, Core Graphics) and Expo's open-source modules.</div></div>
-      <div class="faq-item" style="border-bottom:none;"><div class="faq-question">Contact</div><div class="faq-answer">Questions? Email <a href="mailto:private2106@yahoo.com">private2106@yahoo.com</a>.</div></div>
+      <div class="faq-item" style="border-bottom:none;"><div class="faq-question">Contact</div><div class="faq-answer">Questions? <a href="mailto:private2106@yahoo.com">private2106@yahoo.com</a></div></div>
     </div>
     <div class="contact-box">
       <p>Need help?</p>

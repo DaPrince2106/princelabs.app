@@ -7,51 +7,52 @@
   <meta name="description" content="Authenticator — Simple, private 2FA codes. No accounts, no cloud, all on-device." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(165deg, #0f0f1a 0%, #1a1a2e 40%, #16213e 100%);
-      color: #e2e8f0; line-height: 1.65; min-height: 100vh; position: relative;
+      background: #fafafa; color: #0f172a; line-height: 1.7; min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at 100% 0%, #fef3c7 0%, transparent 50%),
+        radial-gradient(ellipse at 0% 100%, #fffbeb 0%, transparent 50%);
     }
-    body::before {
-      content: ''; position: fixed; inset: 0;
-      background: radial-gradient(ellipse at 80% 0%, rgba(245,158,11,0.06) 0%, transparent 60%),
-                  radial-gradient(ellipse at 20% 100%, rgba(217,119,6,0.05) 0%, transparent 60%);
-      pointer-events: none;
+    .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #d97706; text-decoration: none; font-size: 14px; font-weight: 600; margin-bottom: 36px;
+      padding: 8px 16px; border-radius: 12px; background: #fff; border: 1px solid #fef3c7; transition: all 0.2s;
     }
-    .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; position: relative; z-index: 1; }
-    .back-link { display: inline-flex; align-items: center; gap: 8px; color: #f59e0b; text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 40px; }
-    .back-link:hover { color: #fbbf24; }
-    header { text-align: center; margin-bottom: 56px; }
-    .logo { width: 80px; height: 80px; margin-bottom: 20px; border-radius: 22px; box-shadow: 0 8px 32px rgba(245,158,11,0.12); }
-    header h1 { font-size: 34px; font-weight: 700; color: #f8fafc; letter-spacing: -0.5px; }
-    header p { font-size: 16px; color: #94a3b8; margin-top: 10px; }
+    .back-link:hover { border-color: #fde68a; box-shadow: 0 2px 12px rgba(217,119,6,0.08); }
+    header { text-align: center; margin-bottom: 52px; }
+    .logo { width: 88px; height: 88px; margin-bottom: 24px; border-radius: 24px; box-shadow: 0 8px 32px rgba(217,119,6,0.1); }
+    header h1 { font-size: 38px; font-weight: 800; color: #0f172a; letter-spacing: -0.8px; }
+    header p { font-size: 16px; color: #64748b; margin-top: 10px; }
     .card {
-      background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 36px; margin-bottom: 24px;
+      background: #fff; border: 1px solid #f1f5f9; border-radius: 24px;
+      padding: 36px; margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
-    .card:hover { border-color: rgba(255,255,255,0.12); }
-    .card h2 { font-size: 19px; font-weight: 600; color: #f1f5f9; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
-    .card p, .card li { font-size: 15px; color: #cbd5e1; }
+    .card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
+    .card h2 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .card p, .card li { font-size: 15px; color: #475569; }
     .card ul { padding-left: 22px; }
     .card ul li { margin-bottom: 10px; }
-    .card ul li::marker { color: #f59e0b; }
-    .card strong { color: #f8fafc; }
-    .card code { background: rgba(245,158,11,0.1); color: #fcd34d; padding: 2px 8px; border-radius: 6px; font-size: 13px; }
-    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 20px 0; }
+    .card ul li::marker { color: #d97706; }
+    .card strong { color: #0f172a; }
+    .card code { background: #fffbeb; color: #b45309; padding: 2px 8px; border-radius: 6px; font-size: 13px; font-weight: 500; }
+    .faq-item { border-bottom: 1px solid #f8fafc; padding: 20px 0; }
     .faq-item:last-child { border-bottom: none; }
-    .faq-question { font-weight: 600; font-size: 15px; color: #f1f5f9; margin-bottom: 8px; }
-    .faq-answer { font-size: 14px; color: #94a3b8; }
-    .faq-answer a { color: #fbbf24; text-decoration: underline; }
-    .contact-box { background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.15); border-radius: 16px; padding: 24px; text-align: center; }
-    .contact-box p { font-size: 15px; color: #cbd5e1; margin-bottom: 8px; }
-    .contact-box .email { font-size: 18px; font-weight: 600; color: #fbbf24; text-decoration: none; }
+    .faq-question { font-weight: 700; font-size: 15px; color: #0f172a; margin-bottom: 8px; }
+    .faq-answer { font-size: 15px; color: #475569; }
+    .faq-answer a { color: #d97706; text-decoration: underline; font-weight: 500; }
+    .contact-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 20px; padding: 28px; text-align: center; }
+    .contact-box p { font-size: 15px; color: #475569; margin-bottom: 8px; }
+    .contact-box .email { font-size: 18px; font-weight: 700; color: #d97706; text-decoration: none; }
     .contact-box .email:hover { text-decoration: underline; }
-    footer { text-align: center; padding: 40px 24px; font-size: 13px; color: #475569; }
-    footer a { color: #475569; text-decoration: underline; }
-    @media (max-width: 600px) { .container { padding: 32px 16px; } .card { padding: 24px; } header h1 { font-size: 28px; } }
+    footer { text-align: center; padding: 44px 24px; font-size: 14px; color: #94a3b8; }
+    footer a { color: #94a3b8; text-decoration: underline; }
+    @media (max-width: 600px) { .container { padding: 32px 16px; } .card { padding: 24px; } header h1 { font-size: 30px; } }
   </style>
 </head>
 <body>
@@ -64,26 +65,26 @@
     </header>
     <div class="card">
       <h2><span class="icon">🔐</span> About</h2>
-      <p>Authenticator generates TOTP codes for 2FA entirely on-device. No accounts to create, no cloud sync, no servers. All secrets stay in local storage. Zero network permissions.</p>
-      <p style="margin-top:12px">No analytics. No tracking. Works offline.</p>
+      <p>Authenticator generates TOTP codes for two-factor authentication entirely on-device. No accounts, no cloud sync, no servers. All secrets stay in local storage. Zero network permissions required.</p>
+      <p style="margin-top:12px">No analytics. No tracking. Works fully offline.</p>
     </div>
     <div class="card">
       <h2><span class="icon">✨</span> Features</h2>
       <ul>
         <li>Generate TOTP 6-digit codes from standard secret keys</li>
-        <li>Save accounts with custom names</li>
-        <li>One-tap copy with haptic feedback</li>
+        <li>Save accounts with custom names for quick access</li>
+        <li>One-tap code copy with haptic feedback</li>
         <li>Real-time countdown showing code expiry</li>
-        <li>All data stored locally — fully offline</li>
-        <li>Zero network permissions, no analytics</li>
+        <li>All data stored locally — works fully offline</li>
+        <li>Zero network permissions, no analytics, no tracking</li>
       </ul>
     </div>
     <div class="card">
       <h2><span class="icon">❓</span> FAQ</h2>
       <div class="faq-item"><div class="faq-question">How do I add an account?</div><div class="faq-answer">Tap the <strong>Authenticator</strong> tab, enter a name, paste the secret key from your 2FA provider, then tap <strong>Save</strong>. The 6-digit code appears immediately.</div></div>
-      <div class="faq-item"><div class="faq-question">Where's my secret key?</div><div class="faq-answer">When enabling 2FA on a service (Google, GitHub, Instagram, X), look for <strong>Setup key</strong> or <strong>Secret key</strong> — a long string of letters and numbers.</div></div>
+      <div class="faq-item"><div class="faq-question">Where do I find my secret key?</div><div class="faq-answer">When enabling 2FA on a service (Google, GitHub, Instagram, X, etc.), look for <strong>Setup key</strong> or <strong>Secret key</strong> — a long string of letters and numbers.</div></div>
       <div class="faq-item"><div class="faq-question">How do I copy a code?</div><div class="faq-answer">Tap the 6-digit code. It copies to your clipboard and a checkmark confirms it.</div></div>
-      <div class="faq-item"><div class="faq-question">Is my data safe?</div><div class="faq-answer">Yes. Authenticator never connects to the internet. Your secrets stay on your device. No accounts, no cloud, no analytics. Zero network permissions required.</div></div>
+      <div class="faq-item"><div class="faq-question">Is my data safe?</div><div class="faq-answer">Yes. Authenticator never connects to the internet. Your secrets stay on your device in local storage. No accounts, no cloud, no analytics. Zero network permissions.</div></div>
       <div class="faq-item"><div class="faq-question">Can I delete an account?</div><div class="faq-answer">Yes. On the <strong>Accounts</strong> tab, tap the X icon next to any account. Confirm deletion when prompted.</div></div>
     </div>
     <div class="card">

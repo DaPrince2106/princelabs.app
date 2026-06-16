@@ -4,58 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Glass Calculator — Support</title>
-  <meta name="description" content="Glass Calculator — Scientific calculator, unit converter with live currency rates, and graphing in a stunning glass-effect interface." />
+  <meta name="description" content="Glass Calculator — Scientific calculator, unit converter with live currency rates, and graphing in a gorgeous glass-effect interface." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(165deg, #0f0f1a 0%, #1a1a2e 40%, #16213e 100%);
-      color: #e2e8f0; line-height: 1.65; min-height: 100vh; position: relative;
+      background: #fafafa; color: #0f172a; line-height: 1.7; min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at 50% 0%, #d1fae5 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, #ecfdf5 0%, transparent 50%);
     }
-    body::before {
-      content: ''; position: fixed; inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(16,185,129,0.06) 0%, transparent 60%),
-                  radial-gradient(ellipse at 50% 100%, rgba(5,150,105,0.05) 0%, transparent 60%);
-      pointer-events: none;
+    .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #059669; text-decoration: none; font-size: 14px; font-weight: 600; margin-bottom: 36px;
+      padding: 8px 16px; border-radius: 12px; background: #fff; border: 1px solid #d1fae5; transition: all 0.2s;
     }
-    .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; position: relative; z-index: 1; }
-    .back-link { display: inline-flex; align-items: center; gap: 8px; color: #10b981; text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 40px; }
-    .back-link:hover { color: #34d399; }
-    header { text-align: center; margin-bottom: 56px; }
-    .logo { width: 80px; height: 80px; margin-bottom: 20px; border-radius: 22px; box-shadow: 0 8px 32px rgba(16,185,129,0.12); }
-    header h1 { font-size: 34px; font-weight: 700; color: #f8fafc; letter-spacing: -0.5px; }
-    header p { font-size: 16px; color: #94a3b8; margin-top: 10px; }
+    .back-link:hover { border-color: #a7f3d0; box-shadow: 0 2px 12px rgba(5,150,105,0.08); }
+    header { text-align: center; margin-bottom: 52px; }
+    .logo { width: 88px; height: 88px; margin-bottom: 24px; border-radius: 24px; box-shadow: 0 8px 32px rgba(5,150,105,0.1); }
+    header h1 { font-size: 38px; font-weight: 800; color: #0f172a; letter-spacing: -0.8px; }
+    header p { font-size: 16px; color: #64748b; margin-top: 10px; }
     .card {
-      background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 36px; margin-bottom: 24px;
+      background: #fff; border: 1px solid #f1f5f9; border-radius: 24px;
+      padding: 36px; margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
-    .card:hover { border-color: rgba(255,255,255,0.12); }
-    .card h2 { font-size: 19px; font-weight: 600; color: #f1f5f9; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
-    .card p, .card li { font-size: 15px; color: #cbd5e1; }
+    .card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
+    .card h2 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .card p, .card li { font-size: 15px; color: #475569; }
     .card ul { padding-left: 22px; }
     .card ul li { margin-bottom: 10px; }
-    .card ul li::marker { color: #10b981; }
-    .card strong { color: #f8fafc; }
+    .card ul li::marker { color: #059669; }
+    .card strong { color: #0f172a; }
     .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
     .feature-tag {
-      background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15);
-      border-radius: 12px; padding: 14px 16px; text-align: center; font-size: 14px; font-weight: 500; color: #a7f3d0;
+      background: #ecfdf5; border: 1px solid #d1fae5;
+      border-radius: 14px; padding: 16px; text-align: center; font-size: 14px; font-weight: 600; color: #047857;
     }
-    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 20px 0; }
+    .faq-item { border-bottom: 1px solid #f8fafc; padding: 20px 0; }
     .faq-item:last-child { border-bottom: none; }
-    .faq-question { font-weight: 600; font-size: 15px; color: #f1f5f9; margin-bottom: 8px; }
-    .faq-answer { font-size: 14px; color: #94a3b8; }
-    .faq-answer a { color: #34d399; text-decoration: underline; }
-    .contact-box { background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.15); border-radius: 16px; padding: 24px; text-align: center; }
-    .contact-box p { font-size: 15px; color: #cbd5e1; margin-bottom: 8px; }
-    .contact-box .email { font-size: 18px; font-weight: 600; color: #34d399; text-decoration: none; }
+    .faq-question { font-weight: 700; font-size: 15px; color: #0f172a; margin-bottom: 8px; }
+    .faq-answer { font-size: 15px; color: #475569; }
+    .faq-answer a { color: #059669; text-decoration: underline; font-weight: 500; }
+    .contact-box { background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 20px; padding: 28px; text-align: center; }
+    .contact-box p { font-size: 15px; color: #475569; margin-bottom: 8px; }
+    .contact-box .email { font-size: 18px; font-weight: 700; color: #059669; text-decoration: none; }
     .contact-box .email:hover { text-decoration: underline; }
-    footer { text-align: center; padding: 40px 24px; font-size: 13px; color: #475569; }
-    footer a { color: #475569; text-decoration: underline; }
-    @media (max-width: 600px) { .container { padding: 32px 16px; } .card { padding: 24px; } header h1 { font-size: 28px; } .features-grid { grid-template-columns: 1fr; } }
+    footer { text-align: center; padding: 44px 24px; font-size: 14px; color: #94a3b8; }
+    footer a { color: #94a3b8; text-decoration: underline; }
+    @media (max-width: 600px) { .container { padding: 32px 16px; } .card { padding: 24px; } header h1 { font-size: 30px; } .features-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -86,11 +87,11 @@
     </div>
     <div class="card">
       <h2><span class="icon">❓</span> FAQ</h2>
-      <div class="faq-item"><div class="faq-question">How do I switch modes?</div><div class="faq-answer">Tap the mode button (≡) on the display to pick from Basic, Scientific, Converter, Graphing, or History.</div></div>
-      <div class="faq-item"><div class="faq-question">How does the converter work?</div><div class="faq-answer">Switch to Converter mode, pick a category (Length, Weight, Temperature, Volume, Area, Speed, Time, Storage, Energy, Pressure, Fuel, Angle, or Currency), choose units, and enter a value.</div></div>
-      <div class="faq-item"><div class="faq-question">Are currency rates live?</div><div class="faq-answer">Yes — fetched from open.er-api.com when you use the Currency converter. Fails gracefully to 1:1 rates.</div></div>
+      <div class="faq-item"><div class="faq-question">How do I switch between modes?</div><div class="faq-answer">Tap the mode button (≡) on the display to pick from Basic, Scientific, Converter, Graphing, or History. The interface adapts to each mode.</div></div>
+      <div class="faq-item"><div class="faq-question">How does the unit converter work?</div><div class="faq-answer">Switch to Converter mode, pick a category (Length, Weight, Temperature, Volume, Area, Speed, Time, Storage, Energy, Pressure, Fuel, Angle, or Currency), choose units, and enter a value.</div></div>
+      <div class="faq-item"><div class="faq-question">Are currency rates live?</div><div class="faq-answer">Yes — fetched from open.er-api.com when you use the Currency converter. Fails gracefully to 1:1 rates if offline.</div></div>
       <div class="faq-item"><div class="faq-question">Does the app collect data?</div><div class="faq-answer">No. All calculations stay on your device. No analytics, tracking, or data collection of any kind.</div></div>
-      <div class="faq-item"><div class="faq-question">Dark mode?</div><div class="faq-answer">Yes. Tap the sun/moon icon to toggle between light and dark themes.</div></div>
+      <div class="faq-item"><div class="faq-question">Is there a dark mode?</div><div class="faq-answer">Yes. Tap the sun/moon icon in the top-right corner of the display to toggle between light and dark themes.</div></div>
     </div>
     <div class="card">
       <h2><span class="icon">📋</span> Converter Categories</h2>
@@ -109,10 +110,10 @@
       <h2><span class="icon">🔒</span> Privacy Policy</h2>
       <p><strong>Last updated:</strong> June 2026</p>
       <div class="faq-item"><div class="faq-question">Data Collection</div><div class="faq-answer">Glass Calculator does <strong>not</strong> collect, store, or transmit any personal data. No analytics, crash reporting, or tracking SDKs.</div></div>
-      <div class="faq-item"><div class="faq-question">Internet Access</div><div class="faq-answer">Only used to fetch live currency rates from open.er-api.com. No personal data is sent.</div></div>
-      <div class="faq-item"><div class="faq-question">Local Storage</div><div class="faq-answer">Calculation history (up to 100 entries) is stored in memory only — not persisted to disk or shared.</div></div>
+      <div class="faq-item"><div class="faq-question">Internet Access</div><div class="faq-answer">Only used to fetch live currency rates from open.er-api.com. No personal data is sent with these requests.</div></div>
+      <div class="faq-item"><div class="faq-question">Local Storage</div><div class="faq-answer">Calculation history (up to 100 entries) stored in memory only — not persisted to disk or shared.</div></div>
       <div class="faq-item"><div class="faq-question">Third-Party Services</div><div class="faq-answer">Only open.er-api.com for exchange rates. No other services are used.</div></div>
-      <div class="faq-item" style="border-bottom:none;"><div class="faq-question">Contact</div><div class="faq-answer">Questions? Email <a href="mailto:private2106@yahoo.com">private2106@yahoo.com</a>.</div></div>
+      <div class="faq-item" style="border-bottom:none;"><div class="faq-question">Contact</div><div class="faq-answer">Questions? <a href="mailto:private2106@yahoo.com">private2106@yahoo.com</a></div></div>
     </div>
     <div class="contact-box">
       <p>Need help?</p>
