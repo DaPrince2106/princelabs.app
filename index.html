@@ -51,12 +51,11 @@
       box-shadow: 0 8px 30px rgba(0,0,0,0.06);
       transform: translateY(-2px);
     }
-    .links a .app-icon {
+    .links a .icon {
       width: 52px; height: 52px;
       border-radius: 15px;
       flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 26px;
+      object-fit: cover;
     }
     .links a .app-info { flex: 1; }
     .links a .app-info strong { display: block; font-size: 17px; font-weight: 600; }
@@ -79,7 +78,7 @@
     <p class="subtitle">Privacy-first apps. No tracking. All on-device.</p>
     <div class="links">
       <a href="/proxi/">
-        <div class="app-icon" style="background:#e0f2fe; color:#0284c7;">🔒</div>
+        <img class="icon" src="/proxi/proxi-logo.png" alt="Proxi" />
         <div class="app-info">
           <strong>Proxi</strong>
           <span>VPN client — SOCKS5 &amp; HTTPS proxy tunnel</span>
@@ -88,7 +87,7 @@
         <span class="arrow">→</span>
       </a>
       <a href="/authenticator/">
-        <div class="app-icon" style="background:#fef3c7; color:#d97706;">🔐</div>
+        <img class="icon" src="/authenticator/logo.png" alt="Authenticator" />
         <div class="app-info">
           <strong>Authenticator</strong>
           <span>Private 2FA codes — stored locally, works offline</span>
@@ -97,7 +96,7 @@
         <span class="arrow">→</span>
       </a>
       <a href="/glassycalculator/">
-        <div class="app-icon" style="background:#d1fae5; color:#059669;">🧮</div>
+        <img class="icon" src="/glassycalculator/icon.png" alt="Glass Calculator" />
         <div class="app-info">
           <strong>Glass Calculator</strong>
           <span>Scientific calculator, 13 converters, live currency</span>
@@ -106,7 +105,7 @@
         <span class="arrow">→</span>
       </a>
       <a href="/imageconverter/">
-        <div class="app-icon" style="background:#f1f5f9; color:#0f172a;">🖼️</div>
+        <img class="icon" src="/imageconverter/icon.png" alt="Image Converter" />
         <div class="app-info">
           <strong>Image Converter</strong>
           <span>Convert between JPEG, PNG, WEBP, HEIC, TIFF &amp; BMP</span>
