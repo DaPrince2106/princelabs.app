@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internet Simulator — Support</title>
+  <link rel="icon" type="image/png" href="icon.png" />
+  <meta name="description" content="Internet Simulator — 3D globe visualization of global internet traffic with simulated latency, congestion, and great-circle routing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fafafa;
+      color: #0f172a; line-height: 1.7; min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at 0% 0%, #f1f5f9 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 100%, #e2e8f0 0%, transparent 50%);
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #475569; text-decoration: none; font-size: 14px; font-weight: 600; margin-bottom: 36px;
+      padding: 8px 16px; border-radius: 12px; background: #fff; border: 1px solid #e2e8f0; transition: all 0.2s;
+    }
+    .back-link:hover { border-color: #cbd5e1; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    header { text-align: center; margin-bottom: 52px; }
+    .logo { width: 88px; height: 88px; margin-bottom: 24px; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+    header h1 { font-size: 38px; font-weight: 800; color: #0f172a; letter-spacing: -0.8px; }
+    header p { font-size: 16px; color: #64748b; margin-top: 10px; }
+    .card {
+      background: #fff; border: 1px solid #f1f5f9; border-radius: 24px;
+      padding: 36px; margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      transition: box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
+    .card h2 {
+      font-size: 20px; font-weight: 700; color: #0f172a;
+      margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+    }
+    .card h2 .icon { font-size: 24px; }
+    .card p, .card li { font-size: 15px; color: #475569; }
+    .card ul { padding-left: 22px; }
+    .card ul li { margin-bottom: 10px; }
+    .card ul li::marker { color: #475569; }
+    .card strong { color: #0f172a; }
+    .card code {
+      background: #f8fafc; color: #334155;
+      padding: 2px 8px; border-radius: 6px; font-size: 13px; font-weight: 500;
+    }
+    .faq-item { border-bottom: 1px solid #f8fafc; padding: 20px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-weight: 700; font-size: 15px; color: #0f172a; margin-bottom: 8px; }
+    .faq-answer { font-size: 15px; color: #475569; }
+    .faq-answer a { color: #475569; text-decoration: underline; font-weight: 500; }
+    .contact-box {
+      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px;
+      padding: 28px; text-align: center;
+    }
+    .contact-box p { font-size: 15px; color: #475569; margin-bottom: 8px; }
+    .contact-box .email { font-size: 18px; font-weight: 700; color: #334155; text-decoration: none; }
+    .contact-box .email:hover { text-decoration: underline; }
+    footer { text-align: center; padding: 44px 24px; font-size: 14px; color: #94a3b8; }
+    footer a { color: #94a3b8; text-decoration: underline; }
+    @media (max-width: 600px) {
+      .container { padding: 32px 16px; }
+      .card { padding: 24px; }
+      header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="/">← princelabs</a>
+    <header>
+      <img class="logo" src="icon.png" alt="Internet Simulator logo" />
+      <h1>Internet Simulator</h1>
+      <p>3D globe traffic visualizer — support &amp; documentation</p>
+    </header>
+    <div class="card">
+      <h2><span class="icon">📖</span> About</h2>
+      <p>Internet Simulator renders a monochrome 3D globe that visualizes global internet traffic as pulses of light. It simulates packet routing between 24 data center nodes across 38 submarine cables with realistic latency, congestion, and great-circle paths. Built with Three.js via <code>expo-gl</code>.</p>
+      <p style="margin-top:12px">No data collection. No analytics. Everything runs on your device.</p>
+    </div>
+    <div class="card">
+      <h2><span class="icon">🌐</span> Features</h2>
+      <ul>
+        <li><strong>3D Globe</strong> — Wireframe sphere with 2,000 stars, atmosphere glow, and pulsing node markers</li>
+        <li><strong>Traffic Simulation</strong> — Packets spawn and travel along great-circle arcs between 24 global data centers</li>
+        <li><strong>Latency Model</strong> — Realistic delays based on great-circle distance and oscillating congestion multiplier</li>
+        <li><strong>Live Statistics</strong> — In-flight packets, average latency, and congestion level displayed in real time</li>
+        <li><strong>Traffic Log</strong> — Scrolling log of packet arrivals with origin, destination, and latency</li>
+        <li><strong>Speed Controls</strong> — Pause/resume and adjust simulation speed (1x, 2x, 5x)</li>
+        <li><strong>Your Location</strong> — Blue dot on the globe shows where you are (optional location permission)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2><span class="icon">❓</span> FAQ</h2>
+      <div class="faq-item"><div class="faq-question">What does the app do?</div><div class="faq-answer">It displays a 3D globe and animates simulated internet traffic as light pulses traveling between data centers. It's a visualization tool — no actual network traffic is generated or intercepted.</div></div>
+      <div class="faq-item"><div class="faq-question">Why does it need location access?</div><div class="faq-answer">Location is used only to place a blue dot on the globe at your current position. No location data is stored, transmitted, or shared. You can deny the permission and the app still works.</div></div>
+      <div class="faq-item"><div class="faq-question">Can I control the simulation?</div><div class="faq-answer">Yes. Use the controls at the bottom-right to pause/resume and cycle through simulation speeds: 1x, 2x, and 5x.</div></div>
+      <div class="faq-item"><div class="faq-question">What data centers are shown?</div><div class="faq-answer">24 major global data center hubs spanning North America, South America, Europe, Africa, Asia, and Australia, connected by 38 submarine cable routes.</div></div>
+    </div>
+    <div class="card">
+      <h2><span class="icon">📲</span> Platforms</h2>
+      <ul>
+        <li><strong>iOS</strong> 15.1+ — iPhone &amp; iPad</li>
+        <li><strong>Android</strong> (coming soon)</li>
+      </ul>
+    </div>
+    <div class="contact-box">
+      <p>Need help?</p>
+      <a class="email" href="mailto:private2106@yahoo.com">private2106@yahoo.com</a>
+    </div>
+    <footer>
+      <p>&copy; 2025 Internet Simulator · <a href="mailto:private2106@yahoo.com">Contact</a></p>
+    </footer>
+  </div>
+</body>
+</html>
